@@ -4,8 +4,29 @@ class BinarySearchTree:
     self.left = None
     self.right = None
 
+  def DFSUtil(self, v, visited):
+ 
+        # Mark the current node as visited and print it
+        visited[v]= True
+        print(v)
+ 
+        # Recur for all the vertices adjacent to
+        # this vertex
+        for i in self.graph[v]:
+            if visited[i] == False:
+                self.DFSUtil(i, visited)
+
   def depth_first_for_each(self, cb):
-    pass    
+    V = len(self.graph)  #total vertices
+        # Mark all the vertices as not visited
+    visited =[False]*(V)
+ 
+        # Call the recursive helper function to print
+        # DFS traversal starting from all vertices one
+        # by one
+    for i in range(V):
+        if visited[i] == False:
+            self.DFSUtil(i, visited) 
 
   def breadth_first_for_each(self, cb):
     pass
